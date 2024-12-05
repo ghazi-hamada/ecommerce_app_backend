@@ -196,6 +196,83 @@ function result($count)
 
 function sendEmail($to, $title, $body)
 {
-    $header = "From: support@waelabohamza.com " . "\n" . "CC: waeleagle1243@gmail.com";
-    mail($to, $title, $body, $header);
+    // إعداد الهيدر لدعم HTML
+    $headers  = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: support@appghazi.com" . "\r\n";
+    $headers .= "CC: ghazihamada7@gmail.com" . "\r\n";
+
+    // قالب HTML للرسالة
+    $htmlBody = '
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Email</title>
+        <style>
+            body {
+                font-family: "Arial", sans-serif;
+                background-color: #f9f9f9;
+                margin: 0;
+                padding: 0;
+                color: #333;
+            }
+            .email-container {
+                max-width: 600px;
+                margin: 30px auto;
+                background: #fff;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .email-header {
+                background: #FF4747;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .email-body {
+                padding: 30px;
+                font-size: 16px;
+                line-height: 1.8;
+                color: #555;
+            }
+            .email-body p {
+                margin: 0 0 15px;
+            }
+            .email-footer {
+                background: #f1f1f1;
+                text-align: center;
+                padding: 15px;
+                color: #888;
+                font-size: 14px;
+            }
+            .email-footer a {
+                color: #FF4747;
+                text-decoration: none;
+                font-weight: white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="email-container">
+            <div class="email-header">
+                ' . htmlspecialchars($title) . '
+            </div>
+            <div class="email-body">
+                <p>' . nl2br($body) . '</p>
+            </div>
+            <div class="email-footer">
+                &copy; 2024 App Ghazi | <a href="https://ghaziapp.store">ghaziapp.store</a>
+            </div>
+        </div>
+    </body>
+    </html>';
+
+    // إرسال البريد
+    mail($to, $title, $htmlBody, $headers);
 }
