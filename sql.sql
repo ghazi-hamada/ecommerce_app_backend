@@ -16,10 +16,13 @@ SELECT
     items.*
 FROM
     cart
-    INNER JOIN items ON items.items_id = cart.cart_itemsid;
+    INNER JOIN items ON items.items_id = cart.cart_itemsid
+    WHERE cart.cart_orders = 0;
 
 --  SELECT cart.*, items.*,(items.items_price *(1-(items.items_discount /100))) AS pric_after_dis ,(cart_quantity * (items.items_price *(1-(items.items_discount /100)))) AS total FROM cart  
 -- INNER JOIN items ON items.items_id = cart.cart_itemsid;
+
+CREATE OR REPLACE VIEW items1view AS
 SELECT
     items.*,
     categories.*,
@@ -31,6 +34,7 @@ SELECT
                 cart
             WHERE
                 cart.cart_itemsid = items.items_id
+                AND cart.cart_orders = 0
         ) THEN 1
         ELSE 0
     END AS item_in_cart

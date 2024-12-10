@@ -7,8 +7,7 @@ $itemsid = filterRequest("itemsid");
 $cartQuantity = filterRequest("cartQuantity");
 
 
-
-$stmt = $con->prepare("INSERT INTO cart (cart_usersid, cart_itemsid, cart_quantity, cart_orders) VALUES ($usersid, $itemsid, $cartQuantity, 0)");
+$stmt = $con->prepare("UPDATE cart SET cart_quantity = $cartQuantity WHERE cart_usersid = $usersid AND cart_itemsid = $itemsid");
 $stmt->execute();
 $count = $stmt->rowCount();
 
