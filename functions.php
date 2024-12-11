@@ -39,7 +39,7 @@ function getAllData($table, $where = null, $values = null, $json = true)
     }
 }
 
-function getData($table, $where = null, $values = null)
+function getData($table, $where = null, $values = null , $json = true)
 {
     global $con;
     $data = array();
@@ -47,12 +47,16 @@ function getData($table, $where = null, $values = null)
     $stmt->execute($values);
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     $count  = $stmt->rowCount();
+   if ($json == true) {
     if ($count > 0) {
         echo json_encode(array("status" => "success", "data" => $data));
     } else {
         echo json_encode(array("status" => "failure"));
     }
-    return $count;
+   }else{
+       
+       return $count;
+   }
 }
 
 
