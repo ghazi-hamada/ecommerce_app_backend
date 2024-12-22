@@ -1,14 +1,11 @@
 <?php
 include "connect.php";
-
 $categoryid = filterRequest("id");
 $userid = filterRequest("usersid");
-
 if (empty($categoryid) || empty($userid)) {
     echo json_encode(array("status" => "failure", "message" => "Missing parameters"));
     exit();
 }
-
 $stmt = $con->prepare("
 SELECT 
     items1view.*, 
@@ -34,15 +31,11 @@ WHERE categories_id = :categoryid
           AND favorite.favorite_usersid = :userid
   )
 ");
-
 $stmt->bindParam(':categoryid', $categoryid, PDO::PARAM_INT);
 $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
-
 $stmt->execute();
-
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $count = $stmt->rowCount();
-
 if ($count > 0) {
     echo json_encode(array("status" => "success", "data" => $data));
 } else {

@@ -4,4 +4,4 @@ include '../connect.php';
 
 $usersid = filterRequest("usersid");
 
-getAllData('orders', "orders_usersid = '$usersid'");
+getAllData('ordersView', "orders_usersid = '$usersid' AND orders_status != 4");

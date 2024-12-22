@@ -19,3 +19,4 @@ insertNotification(
     "none",
     "/pending",
 );
+sendGCM("Alert", "there is a new order", "delivery", "none", "none");

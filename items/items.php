@@ -12,27 +12,19 @@ if (empty($categoryid) || empty($userid)) {
 $stmt = $con->prepare("
 SELECT 
     items1view.*, 
-    1 as favorite
-FROM items1view 
-INNER JOIN favorite 
+    COALESCE(AVG(rating.rating_value), 0) AS rating,
+    CASE 
+        WHEN favorite.favorite_itemsid IS NOT NULL THEN 1 
+        ELSE 0 
+    END AS favorite
+FROM items1view
+LEFT JOIN favorite 
     ON favorite.favorite_itemsid = items1view.items_id 
     AND favorite.favorite_usersid = :userid
+LEFT JOIN rating 
+    ON rating.rating_itemid = items1view.items_id
 WHERE categories_id = :categoryid
-
-UNION ALL
-
-SELECT 
-    items1view.*, 
-    0 as favorite
-FROM items1view
-WHERE categories_id = :categoryid 
-  AND items_id NOT IN (
-      SELECT items1view.items_id 
-      FROM items1view 
-      INNER JOIN favorite 
-          ON favorite.favorite_itemsid = items1view.items_id 
-          AND favorite.favorite_usersid = :userid
-  )
+GROUP BY items1view.items_id
 ");
 
 $stmt->bindParam(':categoryid', $categoryid, PDO::PARAM_INT);
@@ -48,3 +40,4 @@ if ($count > 0) {
 } else {
     echo json_encode(array("status" => "failure"));
 }
+?>

@@ -292,8 +292,8 @@ function getAccessToken()
     $serviceAccountJson = [
         "type" => "service_account",
         "project_id" => "e-commerce-a9af1",
-        "private_key_id" => "24d85ec31146b38148f4d5d7e68b556c8bd10659",
-        "private_key" => "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAqOen4p/SNPrl\nGPr3gmZ/wJ8pl+XsZmQ4IMBzXvuGI8fkpBC2ahLHIdGA/s6QGbGMptY8ijtSSW4L\ncllM7rdHRxgK8iWRAzhi+eXz25XLhl1XKjoQc4zkRkC/SCMC1JgN6mxbXyTI0V7q\nQp5Focpm/+iGNgrhIQ8gm8g2GjohUGIfJrWxTI8lT1AJmy8rjwl7NTWlEplkkqov\n9qYKXC5oGX81dFcq3Y2mNk5pw7PO04ZltugF58vdSxEnqteueI7dxudGmX/gft83\nOgIjdoSksKH0D/zcBzB4biQQBwR7v2daNQaIt/+6Zy73uObjV68ar7f9geKEQyC7\nfDuoInClAgMBAAECggEAHVOYr72Xhm/6IRWEXljDMX8ouzQcE7giWUjjAqzarLiV\nnQA8awgKg7VqJrCi0NyYYkijI+QG06fJ0IQ/g65yx67SwhfKECDlXGudzVkHnEt/\nudz7qbVtJPJsuLFKYwvpeXTNubrp5oe4YwBxBzhxjuw1gPiI/2wA2X3dJB8p6hgG\nK3yqZ+paJgJFBrOyHDNb9JEyV5rXpPmBv4Ru9UBnQ1A/lMn9MGpY2U4JNY2E6b9T\nmw3jPFKZn9qkC8wNim1XSFET69Dw57y/nGWIvf6gOp0Jnqk5U4viouVjBmiAcjMn\nSaueREd03djcFDXfZY6KdkcUogIB/R2yQTag+EPKoQKBgQD8lp+2fyASBSUGQbJx\nYJUunW5FVYrfm3gygmodfBZgs3D5f+VrTazHsz1cLKAv1XEa9R+GKTyMZZYh28/A\ncE+b2F65YLJAMowextZke7wiXzfXirVNNZ6gfbD6Zp/x1iIP7/odP1p0jfpYZtVE\neymZDIZeelXbMllg711ZvzHwEwKBgQDDQxDNZckS+uTSRo5kSbTfYngiYasOKmHx\nL1cySiHC72JxdhUhy1eKhptErKUyfeUNw+bf2uB4rmkU56uiQ9WOfODIW53WjV3u\nZSvZgpYXt+PYRsrGuccLL7Qu5uZiOy49bJ5613yDcQ0fUJUeufB/c73oKbMCNcvK\n6T/g6W7jZwKBgQCCyj+zEMp7ajyMq9IJURiORaiGsE+zj15C0TK/R7SSp/fUyXvy\n/wp7cX1RUC419pCVg92p64pVrHh72cUOgVlHelc6KC7EfSf++7ih2UxGhAV3T3Sn\noR8dPVg5oJArelSy6fEZ2ectuSKrSbwetKOKg2jEXRY95SlQv0EYKp9iDwKBgAFl\nuHgP02mMXBjZImm7UU0L8lokosm+KedE9HXKrAUuG2E+fBY600yNfAz4w1HiLsJz\ndXKCqXqTnPLmWYcWvy9+20jzxuRjLJnpJXAwDAztZvcEQq07ZR5CYCK5ykpHrCQK\nY/PzGNQD+hkQRZDrubnfxSslKT/JzMSN+MQOR5nfAoGAbwbh8d0F/F+6BCmITE7h\nFW5ejwKnBXv8x6TLRurMbRXEpjY+i1cdLw0NdG8xeovC9UoDMfcIU0hD8+MfmMLA\nwMk632hf7Edc1xPJCNkaNMXjkKtLbkZfYytKJ43leEsOO0ipt2aRRdK+d8ThQCYa\n52Zqqn2lNz1ftibf9hLTdXY=\n-----END PRIVATE KEY-----\n",
+        "private_key_id" => "109be236b00af2f969d2e6a67f95a70a7ff8fc25",
+        "private_key" => "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdFWTMI3CGsj2l\nVYgj/QEgtmPniVM0MytpCN/2j77JKxyXT8okgAJR852QklbNIAONZMOXvfXCilSQ\nGy4uY53bvQhs4MZYLu/p5yWZ3bo+AoY+damItptGezAVe9LOdHBEFJqsovFH7x/w\n8i0Ln54R2M6UqIBdBBdbYn0yq6ZETHK2QTskYL8hsmg5DsBEerXmK1BkbQOPojuY\n2ATiVNqRN2ToNbYja12pseWa5leX2AQx3HTUwhS5sJhLmTtu4Ktf4YcBpV3Adh04\nj472pDzFZzxCttWt4egDEvK79XFv7eEpFVWELWjd4gsQ5578oko4asNUKVopYjXk\noGHcRwABAgMBAAECggEAAgQJRBlcU04sPlfnpFaV0h6lD46Sk8PoVbO4dAiKMTit\naD+s32UJIpYWuok2NfGoOgNGA0d7xOBTj3nZ0NyUZQJ6/jKwOOd5Sq4drGjNAAi2\nQkzuPQPi4DeqeUwae23BFw6QoZCBuiOWbFgfPdvxglce54d2BjuMNS8BXkoXmx6+\n3TVhkcXOLStN/7tlh868PrB1xt5jhxps0L7crJXkj+Yft/87MD4JLJhTnlFMQrM1\nXkocM55QjO7tgNUArd34OGE4Djw+3ksnIMiPZd+Alj9L+06qZ26M5+oWIrnpOk37\nET3BL03G9EmGtFSx+grSiPoqWUmh8e8fo0O1l530dQKBgQDXTgoO1NuJB4J9+8LI\n8JkUNY9gcNgdz5wguQIKdAQ45EpEB9iKTkEC+c7e7XdE/7YJ3ZWTiaZXopN0eINr\n/Ix26E8dHZcIGQd9lyRJmue4RV3Kib6wXTAvICmhNnUnXSaw5+n5TkrASLRfUGWI\nhQV4JqpeySvK0XNt+K/cUSDZMwKBgQC6xjNIkq22QyJ4YgI4th8ati2aUK1u4m9z\ntQOCqmnaDYQ6GtLq2feyd2ui8VcnS0gByaEjIFXT2EMOlvbpDknUK6SLiniJ2L0H\nwSvmjufoHXJkcxCV6dIwraTQNW4KFXRHUkUavy5gHbUhmR50m0nZIavmFEfDOSrg\nw6c0eVPJ+wKBgEAJMeyfWnwzA5i83H4vMRhVpcMlTOHw8Zq56+V4BBl3rK73NmxM\nQgHEksazEhovg9EDWo17D0JZVEn73fqsLorfJUifmGAMMbIk1eIedHTWDMNEnLaP\nwNkDU95i+A0xI2TSVUCVDJ6MATmoC8rC5ZGKznlKk//Ks+4tXQDGEGMJAoGAaLj8\nxDJJ6CnYR/tcF4Q2CHohM6cMt2GK8CuMXlVCqJpvi0zC+h9gvNYsqd376fJR2368\nNL/Kn89gOev3YVE7oBUgW4U2dMPrqU9sWAfEi+cG3r+NiyDhU53pDT0IB+tjmSHN\n0WNkk0vU5ZO++c6gJ3izs3uniRSisAfD1q44hsUCgYEAj+26b9xGQBsGxq6iIdtd\nYs4lqgFxZLP63K18sDY3fOM7L+o4PJ0Y1LZK26UbARUgw5TzOgzlukWdhAJBRUUT\n3eS6AiOMEyjnTP93hJX6d43shH+kQV17TdyvAvzTztWnblc8VJ4lJkAXpBUO7ynV\nlZEgqmHo/ojd8YxLqJKbwdM=\n-----END PRIVATE KEY-----\n",
         "client_email" => "firebase-adminsdk-tlaiq@e-commerce-a9af1.iam.gserviceaccount.com",
         "client_id" => "108631000510376998180",
         "auth_uri" => "https://accounts.google.com/o/oauth2/auth",
@@ -379,8 +379,14 @@ function sendGCM($title, $message, $topic, $pageid, $pagename)
 function insertNotification($title, $message, $userid, $topic, $pageid, $pagename)
 {
     global $con;
-    $stmt = $con->prepare("INSERT INTO `notification`( `notification_title`, `notification_body`, `notification_userid`) VALUES ('?','?','?')");
-    $stmt->execute([$title, $message, $userid]);
+    $stmt = $con->prepare("INSERT INTO `notification`( `notification_title`, `notification_body`, `notification_userid`) VALUES ( ?, ?, ?)");
+    $stmt->execute(
+        array(
+            $title,
+            $message,
+            $userid
+        )
+    );
     sendGCM($title, $message, $topic, $pageid, $pagename);
     $count = $stmt->rowCount();
     return $count;
