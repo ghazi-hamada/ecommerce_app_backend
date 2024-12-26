@@ -3,7 +3,7 @@ include '../connect.php';
 $password = sha1($_POST["password"]);
 $email = filterRequest("email");
 
-$stmt = $con->prepare("SELECT * FROM users WHERE users_email = ? AND users_password = ?");
+$stmt = $con->prepare("SELECT * FROM users WHERE users_email = ? AND users_password = ? AND users_type = 0");
 $stmt->execute(array($email, $password));
 $count = $stmt->rowCount();
 

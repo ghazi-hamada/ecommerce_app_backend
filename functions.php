@@ -11,29 +11,38 @@ function getAllData($table, $where = null, $values = null, $json = true)
 {
     global $con;
     $data = array();
-    if ($where == null) {
-        $stmt = $con->prepare("SELECT  * FROM $table   ");
-    } else {
-        $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
-    }
-    $stmt->execute($values);
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $count  = $stmt->rowCount();
-    if ($json == true) {
-        if ($count > 0) {
+
+    try {
+        // إعداد الاستعلام بناءً على وجود شرط WHERE
+        if ($where == null) {
+            $stmt = $con->prepare("SELECT * FROM $table");
+        } else {
+            $stmt = $con->prepare("SELECT * FROM $table WHERE $where");
+        }
+
+        // تنفيذ الاستعلام
+        $stmt->execute($values);
+
+        // جلب البيانات
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $count = $stmt->rowCount();
+
+        // التعامل مع النتيجة بناءً على التنسيق المطلوب
+        if ($json == true) {
             echo json_encode(array("status" => "success", "data" => $data));
         } else {
-            echo json_encode(array("status" => "failure"));
+            return array("status" => "success", "data" => $data);
         }
-        return $count;
-    } else {
-        if ($count > 0) {
-            return $data;
+    } catch (Exception $e) {
+        // التعامل مع الأخطاء
+        if ($json == true) {
+            echo json_encode(array("status" => "failure", "message" => $e->getMessage()));
         } else {
-            return json_encode(array("status" => "failure"));
+            return array("status" => "failure", "message" => $e->getMessage());
         }
     }
 }
+
 
 function getData($table, $where = null, $values = null, $json = true)
 {
@@ -125,28 +134,32 @@ function deleteData($table, $where, $json = true)
     return $count;
 }
 
-function imageUpload($imageRequest)
+function imageUpload($dir, $imageRequest)
 {
     global $msgError;
-    $imagename  = rand(1000, 10000) . $_FILES[$imageRequest]['name'];
-    $imagetmp   = $_FILES[$imageRequest]['tmp_name'];
-    $imagesize  = $_FILES[$imageRequest]['size'];
-    $allowExt   = array("jpg", "png", "gif", "mp3", "pdf");
-    $strToArray = explode(".", $imagename);
-    $ext        = end($strToArray);
-    $ext        = strtolower($ext);
+    if (isset($_FILES[$imageRequest])) {
+        $imagename  = rand(1000, 10000) . $_FILES[$imageRequest]['name'];
+        $imagetmp   = $_FILES[$imageRequest]['tmp_name'];
+        $imagesize  = $_FILES[$imageRequest]['size'];
+        $allowExt   = array("jpg", "png", "gif", "mp3", "pdf" , "svg",'webp');
+        $strToArray = explode(".", $imagename);
+        $ext        = end($strToArray);
+        $ext        = strtolower($ext);
 
-    if (!empty($imagename) && !in_array($ext, $allowExt)) {
-        $msgError = "EXT";
-    }
-    if ($imagesize > 2 * MB) {
-        $msgError = "size";
-    }
-    if (empty($msgError)) {
-        move_uploaded_file($imagetmp,  "../upload/" . $imagename);
-        return $imagename;
-    } else {
-        return "fail";
+        if (!empty($imagename) && !in_array($ext, $allowExt)) {
+            $msgError = "EXT";
+        }
+        if ($imagesize > 2 * MB) {
+            $msgError = "size";
+        }
+        if (empty($msgError)) {
+            move_uploaded_file($imagetmp,  $dir . "/" . $imagename);
+            return $imagename;
+        } else {
+            return $msgError;
+        }
+    }else {
+        return 'empty' ; 
     }
 }
 
@@ -200,7 +213,6 @@ function sendEmail($to, $title, $body)
     $headers  = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
     $headers .= "From: support@appghazi.com" . "\r\n";
-    $headers .= "CC: ghazihamada7@gmail.com" . "\r\n";
 
     // قالب HTML للرسالة
     $htmlBody = '
@@ -368,7 +380,6 @@ function sendGCM($title, $message, $topic, $pageid, $pagename)
         if (curl_errno($ch)) {
             echo 'Error:' . curl_error($ch);
         }
-        echo $result;
         return $result;
         curl_close($ch);
     } catch (Exception $e) {

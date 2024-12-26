@@ -20,7 +20,7 @@ if ($count > 0) {
         "users_phone" => $phone,
         "users_password" => $password,
         "users_verifycode" => $verifycode,
-        "users_type" => 1,
+        "users_type" => 2,
     );
     sendEmail($email, "Verify Code Ecommerce", "Your verify code is: $verifycode");
     $count = insertData("users", $data);
