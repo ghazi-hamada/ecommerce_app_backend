@@ -18,7 +18,7 @@ if ($type  == "0") {
     );
 }
 
-
+// if order_status != 1 return message error ' order not pending '
 updateData("orders", $data, "orders_id = $orderid AND orders_status = 1");
 
 // sendGCM("success" , "The Order Has been Approved" , "users$userid" , "none" , "refreshorderpending"); 
