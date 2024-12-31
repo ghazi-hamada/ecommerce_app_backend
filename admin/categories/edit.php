@@ -6,7 +6,7 @@ $categoriesName = filterRequest("categoriesName");
 $categoriesNameAr = filterRequest("categoriesNameAr");
 $categoriesImage = filterRequest("categoriesImage");
 
-$res = imageUpload("../../uploads/categories", "files");
+$res = imageUpload("../../upload/categories", "files");
 if ($res == 'empty') {
 
     $data = array(
